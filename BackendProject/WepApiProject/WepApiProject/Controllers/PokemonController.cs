@@ -54,6 +54,7 @@ namespace WepApiProject.Controllers
         [ProducesResponseType(201)]
         public IActionResult CreatePokemon(string name)
         {
+            name = name.ToLower();
             Console.WriteLine("Created your new pokemon, " + name + " with default stats...");
 
             Pokemon pokemon = new Pokemon();
