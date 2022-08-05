@@ -4,7 +4,7 @@
     {
         static List<Pokemon> PokemonTeam { get; set; }
 
-        static PokemonServices() { 
+        static PokemonServices() {
             PokemonTeam = new List<Pokemon>();
         }
         public static List<Pokemon> GetAll() => PokemonTeam;
@@ -20,9 +20,14 @@
         {
             var pokemon = Get(name);
             if (pokemon is null)
+            {
+                Console.WriteLine(name + " wasn't removed.. are you sure you've got them in your pocket?");
                 return;
-
+            }
+                
             PokemonTeam.Remove(pokemon);
+            Console.WriteLine("You've released " + pokemon.name + " into the wild... say goodbye!");
+            return;
         }
 
         public static void Update(Pokemon pokemon)

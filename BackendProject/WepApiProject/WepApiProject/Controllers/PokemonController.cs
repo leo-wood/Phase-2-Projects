@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WepApiProject.Services;
+
 
 namespace WepApiProject.Controllers
 {
@@ -17,40 +19,33 @@ namespace WepApiProject.Controllers
         /// <summary>
         /// GET method for the Poke API
         /// </summary>
-        
+        /// <param name="name">Please enter the name of a pokemon</param>
+        /// <returns>Adds your new pokemon to the team</returns>
         [HttpGet]
         [Route("")]
         [ProducesResponseType(200)]
         [Produces("application/json")]
-        public async Task<IActionResult> GetPokemon()
+        public async Task<IActionResult> GetPokemon(string name)
         {
-            var apiLink = "pokemon/mewtwo";
+            name = name.ToLower();
+            var apiLink = "pokemon/" + name;
             var res = await _client.GetAsync(apiLink);
             
             var content = await res.Content.ReadAsStringAsync();
             Console.WriteLine("Returning information on the upcoming Pokemon");
             var test = await res.Content.ReadFromJsonAsync<Pokemon>();
-            Console.WriteLine(test.name);
-            Console.WriteLine(test.id);
 
-            apiLink = "pokemon/clefairy";
-            res = await _client.GetAsync(apiLink);
-
-            content = await res.Content.ReadAsStringAsync();
-            Console.WriteLine("Returning information on the upcoming Pokemon");
-            test = await res.Content.ReadFromJsonAsync<Pokemon>();
-            Console.WriteLine(test.name);
-            Console.WriteLine(test.id);
-
-            //var test1 = await res.Content.ReadFromJsonAsync<IList<Pokemon>>();
+            Console.WriteLine("Adding " + test.name + " to your team!");
+            PokemonServices.Add(test);
+            Console.WriteLine("Your team is now: ");
+            foreach (Pokemon pokemon in PokemonServices.GetAll()) { 
+                Console.WriteLine(pokemon.name);
+            }
 
             return Ok(content);
-
-
         }
 
-        
-
+       
         /// <summary>
         /// Demonstrates posting action
         /// </summary>
@@ -78,15 +73,17 @@ namespace WepApiProject.Controllers
         }
 
         /// <summary>
-        /// Demonstrates a delete action
+        /// Removes the chosen pokemon from your team
         /// </summary>
+        /// <param name="pokemonName">Please enter the name of a pokemon in your team</param>
         /// <returns>A 204 No Content Response</returns>
         [HttpDelete]
         [ProducesResponseType(204)]
-        public IActionResult DemonstrateDelete()
+        public IActionResult DeletePokemon(string pokemonName)
         {
-            Console.WriteLine("I'm removing something from the database...");
-
+            pokemonName = pokemonName.ToLower();
+            PokemonServices.Delete(pokemonName);
+           
             return NoContent();
         }
 

@@ -42,10 +42,12 @@
             </summary>
             <param name="year">Enter a year between 1950 and 2022 inclusive. using format 2022, or 1998</param>
         </member>
-        <member name="M:WepApiProject.Controllers.PokemonController.GetPokemon">
+        <member name="M:WepApiProject.Controllers.PokemonController.GetPokemon(System.String)">
             <summary>
             GET method for the Poke API
             </summary>
+            <param name="name">Please enter the name of a pokemon</param>
+            <returns>Adds your new pokemon to the team</returns>
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.DemonstratePost">
             <summary>
@@ -59,10 +61,11 @@
             </summary>
             <returns>A 201 Created Response></returns>
         </member>
-        <member name="M:WepApiProject.Controllers.PokemonController.DemonstrateDelete">
+        <member name="M:WepApiProject.Controllers.PokemonController.DeletePokemon(System.String)">
             <summary>
-            Demonstrates a delete action
+            Removes the chosen pokemon from your team
             </summary>
+            <param name="pokemonName">Please enter the name of a pokemon in your team</param>
             <returns>A 204 No Content Response</returns>
         </member>
         <member name="T:WepApiProject.Controllers.WeatherForecastController">
