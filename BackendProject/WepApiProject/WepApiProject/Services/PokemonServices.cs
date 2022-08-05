@@ -14,6 +14,7 @@
         public static void Add(Pokemon pokemon)
         {
             PokemonTeam.Add(pokemon);
+            Console.WriteLine(pokemon.name + " was added to your team");
         }
 
         public static void Delete(string name)

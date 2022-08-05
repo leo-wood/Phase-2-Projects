@@ -17,10 +17,10 @@ namespace WepApiProject.Controllers
         }
 
         /// <summary>
-        /// GET method for the Poke API
+        /// Retrieves a pokemon from the PokeAPI using their name
         /// </summary>
         /// <param name="name">Please enter the name of a pokemon</param>
-        /// <returns>Adds your new pokemon to the team</returns>
+        /// <returns>Ok Response. Adds your new pokemon to the team</returns>
         [HttpGet]
         [Route("")]
         [ProducesResponseType(200)]
@@ -45,16 +45,20 @@ namespace WepApiProject.Controllers
             return Ok(content);
         }
 
-       
         /// <summary>
-        /// Demonstrates posting action
+        /// Creates a pokemon with any name you choose! Your new pokemon will have null stats to start so dont go into the grass just yet
         /// </summary>
+        /// <param name="name">Please enter the name of your newly created pokemon</param>
         /// <returns>A 201 Created response</returns>
         [HttpPost]
         [ProducesResponseType(201)]
-        public IActionResult DemonstratePost()
+        public IActionResult CreatePokemon(string name)
         {
-            Console.WriteLine("I'm doing some work right now to create a new thing...");
+            Console.WriteLine("Created your new pokemon, " + name + " with default stats...");
+
+            Pokemon pokemon = new Pokemon();
+            pokemon.name = name;
+            PokemonServices.Add(pokemon);
 
             return Created(new Uri("https://www.google.com"), "Hi There");
         }

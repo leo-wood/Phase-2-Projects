@@ -44,15 +44,16 @@
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.GetPokemon(System.String)">
             <summary>
-            GET method for the Poke API
+            Retrieves a pokemon from the PokeAPI using their name
             </summary>
             <param name="name">Please enter the name of a pokemon</param>
-            <returns>Adds your new pokemon to the team</returns>
+            <returns>Ok Response. Adds your new pokemon to the team</returns>
         </member>
-        <member name="M:WepApiProject.Controllers.PokemonController.DemonstratePost">
+        <member name="M:WepApiProject.Controllers.PokemonController.CreatePokemon(System.String)">
             <summary>
-            Demonstrates posting action
+            Creates a pokemon with any name you choose! Your new pokemon will have null stats to start so dont go into the grass just yet
             </summary>
+            <param name="name">Please enter the name of your newly created pokemon</param>
             <returns>A 201 Created response</returns>
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.DemonstratePut">
