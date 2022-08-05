@@ -60,7 +60,8 @@ namespace WepApiProject.Controllers
             pokemon.name = name;
             PokemonServices.Add(pokemon);
 
-            return Created(new Uri("https://www.google.com"), "Hi There");
+            return CreatedAtAction(nameof(CreatePokemon), new { id = pokemon.id }, pokemon);
+            
         }
 
         /// <summary>
