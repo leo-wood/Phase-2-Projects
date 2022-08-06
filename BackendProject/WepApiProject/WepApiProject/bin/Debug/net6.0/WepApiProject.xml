@@ -44,9 +44,9 @@
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.GetPokemon(System.String)">
             <summary>
-            Retrieves a pokemon from the PokeAPI using their name
+            Retrieves a single pokemon from the PokeAPI using their name and adds them to your team
             </summary>
-            <param name="name">Please enter the name of a pokemon</param>
+            <param name="name">Please enter the name of a pokemon e.g. charizard, diglett, clefairy, mewtwo</param>
             <returns>Ok Response. Adds your new pokemon to the team</returns>
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.CreatePokemon(System.String)">
@@ -60,8 +60,9 @@
             <summary>
             Swaps out a pokemon with the specified pokemon
             </summary>
+            <param name="oldPokemon">Please enter the name of the pokemon you wish to remove from your team</param>
             <param name="name">Please enter the name of the pokemon you want in your team</param>
-            <returns>A 201 Created Response></returns>
+            <returns>A 204 No Content Response></returns>
         </member>
         <member name="M:WepApiProject.Controllers.PokemonController.DeletePokemon(System.String)">
             <summary>

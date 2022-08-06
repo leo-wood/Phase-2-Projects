@@ -17,9 +17,9 @@ namespace WepApiProject.Controllers
         }
 
         /// <summary>
-        /// Retrieves a pokemon from the PokeAPI using their name
+        /// Retrieves a single pokemon from the PokeAPI using their name and adds them to your team
         /// </summary>
-        /// <param name="name">Please enter the name of a pokemon</param>
+        /// <param name="name">Please enter the name of a pokemon e.g. charizard, diglett, clefairy, mewtwo</param>
         /// <returns>Ok Response. Adds your new pokemon to the team</returns>
         [HttpGet]
         [Route("")]
@@ -32,14 +32,14 @@ namespace WepApiProject.Controllers
             var res = await _client.GetAsync(apiLink);
             
             var content = await res.Content.ReadAsStringAsync();
-            Console.WriteLine("Returning information on the upcoming Pokemon");
-            var test = await res.Content.ReadFromJsonAsync<Pokemon>();
+            
+            var pokemon = await res.Content.ReadFromJsonAsync<Pokemon>();
 
-            Console.WriteLine("Adding " + test.name + " to your team!");
-            PokemonServices.Add(test);
+            Console.WriteLine("Adding " + pokemon.name + " to your team!");
+            PokemonServices.Add(pokemon);
             Console.WriteLine("Your team is now: ");
-            foreach (Pokemon pokemon in PokemonServices.GetAll()) { 
-                Console.WriteLine(pokemon.name);
+            foreach (Pokemon p in PokemonServices.GetAll()) { 
+                Console.WriteLine(p.name);
             }
 
             return Ok(content);
@@ -68,8 +68,9 @@ namespace WepApiProject.Controllers
         /// <summary>
         /// Swaps out a pokemon with the specified pokemon
         /// </summary>
+        /// <param name="oldPokemon">Please enter the name of the pokemon you wish to remove from your team</param>
         /// <param name="name">Please enter the name of the pokemon you want in your team</param>
-        /// <returns>A 201 Created Response></returns>
+        /// <returns>A 204 No Content Response></returns>
         [HttpPut]
         [ProducesResponseType(201)]
         public IActionResult UpdatePokemonTeam(string oldPokemon, string name)
@@ -79,8 +80,13 @@ namespace WepApiProject.Controllers
             pokemon.name = name;
             PokemonServices.Update(oldPokemon, pokemon);
             Console.WriteLine("You've swapped in to your team " + pokemon.name);
+            Console.WriteLine("Youre pokemon team is now: ");
+            foreach (Pokemon p in PokemonServices.GetAll())
+            {
+                Console.WriteLine(p.name);
+            }
 
-            return Created(new Uri("https://www.google.com"), "Hi There");
+            return NoContent();
         }
 
         /// <summary>
