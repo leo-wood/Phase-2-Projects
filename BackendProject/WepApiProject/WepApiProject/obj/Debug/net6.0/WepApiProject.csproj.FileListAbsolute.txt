@@ -40,3 +40,4 @@ C:\Users\leorw\OneDrive\Desktop\Phase-2-Projects\BackendProject\WepApiProject\We
 C:\Users\leorw\OneDrive\Desktop\Phase-2-Projects\BackendProject\WepApiProject\WepApiProject\obj\Debug\net6.0\WepApiProject.xml
 C:\Users\leorw\OneDrive\Desktop\Phase-2-Projects\BackendProject\WepApiProject\WepApiProject\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\leorw\OneDrive\Desktop\Phase-2-Projects\BackendProject\WepApiProject\WepApiProject\bin\Debug\net6.0\PokeApiNet.dll
+C:\Users\leorw\OneDrive\Desktop\Phase-2-Projects\BackendProject\WepApiProject\WepApiProject\bin\Debug\net6.0\appsettings.Production.json
