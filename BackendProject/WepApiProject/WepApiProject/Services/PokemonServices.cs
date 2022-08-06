@@ -31,12 +31,19 @@
             return;
         }
 
-        public static void Update(Pokemon pokemon)
+        public static void Update(string pokemon, Pokemon newPokemon)
         {
-            var index = PokemonTeam.FindIndex(p => p.name.Equals(pokemon.name, StringComparison.OrdinalIgnoreCase));
-            if (index == -1) { return; }
+            var index = PokemonTeam.FindIndex(p => p.name.Equals(pokemon, StringComparison.OrdinalIgnoreCase));
+            if (index == -1) {
+                PokemonTeam.Add(newPokemon);
+                return; } 
+            else { 
+                PokemonTeam.RemoveAt(index); 
+                PokemonTeam.Insert(index, newPokemon);
+                return;
+                    }
 
-            PokemonTeam.Insert(index, pokemon);
+           
         }
     }
 

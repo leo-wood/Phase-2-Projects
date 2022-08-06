@@ -66,14 +66,19 @@ namespace WepApiProject.Controllers
         }
 
         /// <summary>
-        /// Demonstrates put action
+        /// Swaps out a pokemon with the specified pokemon
         /// </summary>
+        /// <param name="name">Please enter the name of the pokemon you want in your team</param>
         /// <returns>A 201 Created Response></returns>
         [HttpPut]
         [ProducesResponseType(201)]
-        public IActionResult DemonstratePut()
+        public IActionResult UpdatePokemonTeam(string oldPokemon, string name)
         {
-            Console.WriteLine("I'm over-writing whatever was there in the first place...");
+            name = name.ToLower();
+            Pokemon pokemon = new Pokemon();
+            pokemon.name = name;
+            PokemonServices.Update(oldPokemon, pokemon);
+            Console.WriteLine("You've swapped in to your team " + pokemon.name);
 
             return Created(new Uri("https://www.google.com"), "Hi There");
         }
