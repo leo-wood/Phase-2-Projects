@@ -15,11 +15,6 @@ builder.Services.AddSwaggerDocument(options =>
 
 });
 
-builder.Services.AddHttpClient("f1", configureClient: client =>
-{
-    client.BaseAddress = new Uri("http://ergast.com");
-});
-
 builder.Services.AddHttpClient("PokeApi", configureClient: client =>
 {
     client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");

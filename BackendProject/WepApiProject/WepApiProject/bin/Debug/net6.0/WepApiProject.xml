@@ -36,12 +36,6 @@
             </summary>
             <returns>A 204 No Content Response</returns>
         </member>
-        <member name="M:WepApiProject.Controllers.F1Controller.GetF1Standings(System.String)">
-            <summary>
-            GET method for returning the standings of a specified year
-            </summary>
-            <param name="year">Enter a year between 1950 and 2022 inclusive. using format 2022, or 1998</param>
-        </member>
         <member name="M:WepApiProject.Controllers.PokemonController.GetPokemon(System.String)">
             <summary>
             Retrieves a single pokemon from the PokeAPI using their name and adds them to your team
