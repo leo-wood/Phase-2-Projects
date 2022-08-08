@@ -10,14 +10,15 @@ namespace TestPokeApi
         [SetUp]
         public void Setup()
         {
-            
+            PokemonIsCreated();
+            Pokemon_are_different();
         }
 
         /// <summary>
         /// Tests that a Pokemon object can successfully be created and data accessed
         /// </summary>
         [Test]
-        public void TestNewPokemon()
+        public void PokemonIsCreated()
         {
             Pokemon pokemon = new Pokemon();
             pokemon.name = "testPokemon";
@@ -31,20 +32,34 @@ namespace TestPokeApi
             
         }
 
-        public void NSubTest()
-        {
 
+        /// <summary>
+        /// This unit test is to satisfy the NSubstitute requirement.
+        /// Reading the NSub documentation, it seems my project doesnt benefit from NSUb as 
+        /// its recommended for Interfaces which my project doesnt have. 
+        /// So i've tried to make some use of it but its not very effective.
+        /// --------------
+        /// Tests pokemon with different values are not equal
+        /// </summary>
+        [Test]
+        public void Pokemon_are_different()
+        {
 
             Pokemon pokemon = new Pokemon();
             pokemon.name = "SubtestPokemon";
 
-            var substitute = Substitute.For<Pokemon>();
+            pokemon.base_experience = 10;
+
+            var substitutePokemon = Substitute.For<Pokemon>();
 
             var teamSubstitute = Substitute.For<PokemonServices>();
 
+            substitutePokemon.name = "SubtestPokemon";
+            substitutePokemon.base_experience = 20;
 
-
+            Assert.That(pokemon, Is.Not.EqualTo(substitutePokemon));
             
+            Assert.That(pokemon.name, Is.EqualTo(substitutePokemon.name));
 
 
 
