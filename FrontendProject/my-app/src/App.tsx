@@ -31,7 +31,12 @@ function App() {
             <p>The movie was not found</p>
           ) : (
             <p>
+              <div>{movieInfo.Title}</div>
               <div>{movieInfo.Year}</div>
+              <div>{movieInfo.Director}</div>
+              <div>{movieInfo.Runtime}</div>
+              <div>{movieInfo.Genre}</div>
+              
               
             </p>
           )}
@@ -41,8 +46,7 @@ function App() {
 
   function search(){
     axios.get(MOVIE_BASE_URL + movieName + "&" + APIKEY).then((res) => {
-      console.log(res.data);
-      console.log(typeof(res.data.Title));
+
       setMovieInfo(res.data);
 
     })
