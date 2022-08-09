@@ -11,8 +11,11 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import button from "@mui/material/Button";
+
 import './App.css';
 import { title } from 'process';
+import { Icon } from '@mui/material';
 
 
 function App() {
@@ -28,7 +31,7 @@ function App() {
   ]);
 
   const MOVIE_BASE_URL = "http://www.omdbapi.com/?t=";
-  const APIKEY = "apikey=7cca2981";
+  const APIKEY = "7cca2981";
 
   return (
     <div>
@@ -36,13 +39,43 @@ function App() {
             Search for information on any movie using the OMDB API
         </h1>
 
+        <h3>
+          Click add movie to add your searched movie to the watchlist!
+        </h3>
+
         <div>
           <label>Movie name</label><br/>
           <input type="text" id="movie-name" name="movie-name" onChange={e => setMovieName(e.target.value)}/><br/>
 
+          <div>
           <button onClick={search}>
           Search
           </button>
+          </div>
+        </div>
+
+        <div>
+          <TextField 
+          id='search-bar'
+          className='text'
+          value={movieName}
+          onChange={(prop: any) => {
+            setMovieName(prop.target.value);
+          }}
+          label="Enter a Movie name"
+          variant='standard'
+          placeholder='Try "Candyman"'
+          size='small'
+          />
+
+          <IconButton
+            aria-label='search'
+            onClick={() => {
+              search()
+            }}>
+              <SearchIcon style={{ fill: "blue" }} />
+            </IconButton>
+
         </div>
         <p>You have searched for {movieName}</p>
 
@@ -76,7 +109,7 @@ function App() {
   );
 
   function search(){
-    axios.get(MOVIE_BASE_URL + movieName + "&" + APIKEY).then((res) => {
+    axios.get(MOVIE_BASE_URL + movieName + "&apikey=" + APIKEY).then((res) => {
 
       setMovieInfo(res.data);
 
