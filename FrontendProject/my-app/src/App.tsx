@@ -1,26 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [movieName, setMovieName] = useState("");
+  const [movieInfo, setMovieInfo] = useState<undefined | any>(undefined);
+
+  const MOVIE_BASE_URL = "http://www.omdbapi.com/?t=";
+  const APIKEY = "apikey=7cca2981";
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <h1>
+            Search for your favourite movie to check off your list
+        </h1>
+
+        <div>
+          <label>Movie name</label><br/>
+          <input type="text" id="movie-name" name="movie-name" onChange={e => setMovieName(e.target.value)}/><br/>
+
+          <button onClick={search}>
+          Search
+          </button>
+        </div>
+        <p>You have searched for {movieName}</p>
+
+          {movieInfo === undefined ? (
+            <p>The movie was not found</p>
+          ) : (
+            <p>
+              <div>{movieInfo.Year}</div>
+              
+            </p>
+          )}
+        
     </div>
   );
+
+  function search(){
+    axios.get(MOVIE_BASE_URL + movieName + "&" + APIKEY).then((res) => {
+      console.log(res.data);
+      console.log(typeof(res.data.Title));
+      setMovieInfo(res.data);
+
+    })
+  }
+
 }
 
 export default App;
