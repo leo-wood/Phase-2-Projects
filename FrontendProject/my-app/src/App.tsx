@@ -43,6 +43,16 @@ function App() {
   const MOVIE_BASE_URL = "http://www.omdbapi.com/?t=";
   const APIKEY = "7cca2981";
 
+  const searchButton = document.getElementById('search-bar');
+
+  searchButton?.addEventListener('keypress', function handleClick(event) {
+    if(event.key === "Enter") {
+      document.getElementById("search-button")?.click();
+    }
+  
+});
+
+
   return (
     
     <div id="main-body">
@@ -71,6 +81,7 @@ function App() {
           />
 
           <IconButton
+            id="search-button"
             aria-label='search'
             onClick={() => {
               search()
@@ -81,18 +92,23 @@ function App() {
         </div>
 
 
-        <p>You have searched for {movieName}</p>
+        
 
           {movieInfo === undefined ? (
             <p>The movie was not found</p>
           ) : (
             <div id="search-results">
             <p>
-              <div>Title: {movieInfo.Title}</div>
-              <div>Release: {movieInfo.Year}</div>
-              <div>Director: {movieInfo.Director}</div>
-              <div>Runtime: {movieInfo.Runtime}</div>
-              <div>Genre: {movieInfo.Genre}</div>
+              Title: {movieInfo.Title}<br/>
+              
+              Release: {movieInfo.Year}<br/>
+              
+              Director: {movieInfo.Director}<br/>
+              
+              Runtime: {movieInfo.Runtime}<br/>
+              
+              Genre: {movieInfo.Genre}
+              
             </p>
             </div>
           )}
