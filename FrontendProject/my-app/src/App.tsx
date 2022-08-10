@@ -1,28 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
 import axios from "axios";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
+
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import button from "@mui/material/Button";
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import { title } from 'process';
-import { Icon } from '@mui/material';
+
 
 
 import './App.css';
@@ -113,6 +98,8 @@ function App() {
             </div>
           )}
 
+          <div id="watchlist">
+
           <Grid container spacing={2}>
             <Grid item xs={4}>
           <div>
@@ -124,9 +111,11 @@ function App() {
                 </div>
               ))}
             </ul>
+            <div id="buttonGroup">
             <Button variant="contained" onClick={handleAddNewMovie}>Add to Watchlist</Button>
             
             <Button variant="outlined" onClick={handleRemoveMovie}>Pop the latest movie</Button>
+            </div>
             </div>
             </Grid>
             <Grid item xs={1}>
@@ -144,6 +133,7 @@ function App() {
             </Grid>
 
             </Grid>
+            </div>
     </div>
 
     
