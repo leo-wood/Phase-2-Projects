@@ -44,14 +44,16 @@ function App() {
   const APIKEY = "7cca2981";
 
   return (
+    
     <div>
         <h1>
             Search for information on any movie using the OMDB API
         </h1>
-
+        
         <h3>
           Click add movie to add your searched movie to the watchlist!
         </h3>
+        
 
 
         <div>
@@ -77,7 +79,13 @@ function App() {
             </IconButton>
 
         </div>
+
+
         <p>You have searched for {movieName}</p>
+
+        
+
+        
 
           {movieInfo === undefined ? (
             <p>The movie was not found</p>
@@ -91,6 +99,8 @@ function App() {
             </p>
           )}
 
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
           <div>
             <ul>
               {movieList.map((movie) => (
@@ -104,6 +114,22 @@ function App() {
             
             <Button variant="outlined" onClick={handleRemoveMovie}>Pop the latest movie</Button>
             </div>
+            </Grid>
+            <Grid item xs={1}>
+            
+            </Grid>
+            <Grid item xs={4}>
+              <p>
+                Until further updates, a default movie needs to start in the list, hence No Country For Old Men is there
+                <br/>
+                <br/>
+                Pop button does work! <br/>
+                It just requires you to change the text in the search bar for it to display the new list.. unsure why
+              </p>
+
+            </Grid>
+
+            </Grid>
     </div>
 
     
