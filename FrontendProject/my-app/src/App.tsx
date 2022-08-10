@@ -45,13 +45,13 @@ function App() {
 
   return (
     
-    <div>
+    <div id="main-body">
         <h1>
             Search for information on any movie using the OMDB API
         </h1>
         
         <h3>
-          Click add movie to add your searched movie to the watchlist!
+          Click the search icon to find the movie from the API
         </h3>
         
 
@@ -83,13 +83,10 @@ function App() {
 
         <p>You have searched for {movieName}</p>
 
-        
-
-        
-
           {movieInfo === undefined ? (
             <p>The movie was not found</p>
           ) : (
+            <div id="search-results">
             <p>
               <div>Title: {movieInfo.Title}</div>
               <div>Release: {movieInfo.Year}</div>
@@ -97,6 +94,7 @@ function App() {
               <div>Runtime: {movieInfo.Runtime}</div>
               <div>Genre: {movieInfo.Genre}</div>
             </p>
+            </div>
           )}
 
           <Grid container spacing={2}>
@@ -124,7 +122,7 @@ function App() {
                 <br/>
                 <br/>
                 Pop button does work! <br/>
-                It just requires you to change the text in the search bar for it to display the new list.. unsure why
+                It just requires you to change the text in the input search field for it to display the new list.. unsure why
               </p>
 
             </Grid>
