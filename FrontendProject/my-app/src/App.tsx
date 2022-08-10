@@ -43,16 +43,6 @@ function App() {
           Click add movie to add your searched movie to the watchlist!
         </h3>
 
-        <div>
-          <label>Movie name</label><br/>
-          <input type="text" id="movie-name" name="movie-name" onChange={e => setMovieName(e.target.value)}/><br/>
-
-          <div>
-          <button onClick={search}>
-          Search
-          </button>
-          </div>
-        </div>
 
         <div>
           <TextField 
@@ -83,11 +73,11 @@ function App() {
             <p>The movie was not found</p>
           ) : (
             <p>
-              <div>{movieInfo.Title}</div>
-              <div>{movieInfo.Year}</div>
-              <div>{movieInfo.Director}</div>
-              <div>{movieInfo.Runtime}</div>
-              <div>{movieInfo.Genre}</div>
+              <div>Title: {movieInfo.Title}</div>
+              <div>Release: {movieInfo.Year}</div>
+              <div>Director: {movieInfo.Director}</div>
+              <div>Runtime: {movieInfo.Runtime}</div>
+              <div>Genre: {movieInfo.Genre}</div>
             </p>
           )}
 
@@ -100,8 +90,9 @@ function App() {
                 </div>
               ))}
             </ul>
-            <button onClick={handleAddNewMovie}>Add movie</button>
-            <button onClick={handleRemoveMovie}>Pop the latest</button>
+            <Button variant="outlined" onClick={handleAddNewMovie}>Add to Watchlist</Button>
+            
+            <Button variant="outlined" onClick={handleRemoveMovie}>Pop the latest movie</Button>
             </div>    
     </div>
 
