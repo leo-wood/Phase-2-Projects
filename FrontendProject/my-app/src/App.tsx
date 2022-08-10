@@ -12,10 +12,20 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import button from "@mui/material/Button";
-
-import './App.css';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
 import { title } from 'process';
 import { Icon } from '@mui/material';
+
+
+import './App.css';
 
 
 function App() {
@@ -25,8 +35,8 @@ function App() {
 
   const [movieList, setMovieList] = useState([
     {
-      Title: "Default movie",
-      Year: "1998"
+      Title: "No Country For Old Men",
+      Year: "2007"
     }
   ]);
 
@@ -55,7 +65,7 @@ function App() {
           label="Enter a Movie name"
           variant='standard'
           placeholder='Try "Candyman"'
-          size='small'
+          margin="dense"
           />
 
           <IconButton
@@ -90,10 +100,10 @@ function App() {
                 </div>
               ))}
             </ul>
-            <Button variant="outlined" onClick={handleAddNewMovie}>Add to Watchlist</Button>
+            <Button variant="contained" onClick={handleAddNewMovie}>Add to Watchlist</Button>
             
             <Button variant="outlined" onClick={handleRemoveMovie}>Pop the latest movie</Button>
-            </div>    
+            </div>
     </div>
 
     
