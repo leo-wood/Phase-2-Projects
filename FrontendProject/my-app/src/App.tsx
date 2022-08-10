@@ -1,18 +1,16 @@
 import React, { ChangeEvent, useState } from 'react';
 import axios from "axios";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
+
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import RefreshIcon from '@mui/icons-material/Refresh';
+
+
+
 import './App.css';
-import { title } from 'process';
 
 
 function App() {
@@ -22,42 +20,88 @@ function App() {
 
   const [movieList, setMovieList] = useState([
     {
-      Title: "Default movie",
-      Year: "1998"
+      Title: "No Country For Old Men",
+      Year: "2007"
     }
   ]);
 
   const MOVIE_BASE_URL = "http://www.omdbapi.com/?t=";
-  const APIKEY = "apikey=7cca2981";
+  const APIKEY = "7cca2981";
+
+  const searchButton = document.getElementById('search-bar');
+
+  searchButton?.addEventListener('keypress', function handleClick(event) {
+    if(event.key === "Enter") {
+      document.getElementById("search-button")?.click();
+    }
+  
+});
+
 
   return (
-    <div>
+    
+    <div id="main-body">
         <h1>
             Search for information on any movie using the OMDB API
         </h1>
+        
+        <h3>
+          Click the search icon to find the movie from the API
+        </h3>
+        
+
 
         <div>
-          <label>Movie name</label><br/>
-          <input type="text" id="movie-name" name="movie-name" onChange={e => setMovieName(e.target.value)}/><br/>
+          <TextField 
+          id='search-bar'
+          className='text'
+          value={movieName}
+          onChange={(prop: any) => {
+            setMovieName(prop.target.value);
+          }}
+          label="Enter a Movie name"
+          variant='standard'
+          placeholder='Try "Candyman"'
+          margin="dense"
+          />
 
-          <button onClick={search}>
-          Search
-          </button>
+          <IconButton
+            id="search-button"
+            aria-label='search'
+            onClick={() => {
+              search()
+            }}>
+              <SearchIcon style={{ fill: "blue" }} />
+            </IconButton>
+
         </div>
-        <p>You have searched for {movieName}</p>
+
+
+        
 
           {movieInfo === undefined ? (
             <p>The movie was not found</p>
           ) : (
+            <div id="search-results">
             <p>
-              <div>{movieInfo.Title}</div>
-              <div>{movieInfo.Year}</div>
-              <div>{movieInfo.Director}</div>
-              <div>{movieInfo.Runtime}</div>
-              <div>{movieInfo.Genre}</div>
+              Title: {movieInfo.Title}<br/>
+              
+              Release: {movieInfo.Year}<br/>
+              
+              Director: {movieInfo.Director}<br/>
+              
+              Runtime: {movieInfo.Runtime}<br/>
+              
+              Genre: {movieInfo.Genre}
+              
             </p>
+            </div>
           )}
 
+          <div id="watchlist">
+
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
           <div>
             <ul>
               {movieList.map((movie) => (
@@ -67,16 +111,36 @@ function App() {
                 </div>
               ))}
             </ul>
-            <button onClick={handleAddNewMovie}>Add movie</button>
-            <button onClick={handleRemoveMovie}>Pop the latest</button>
-            </div>    
+            <div id="buttonGroup">
+            <Button variant="contained" onClick={handleAddNewMovie}>Add to Watchlist</Button>
+            
+            <Button variant="outlined" onClick={handleRemoveMovie}>Pop the latest movie</Button>
+            </div>
+            </div>
+            </Grid>
+            <Grid item xs={1}>
+            
+            </Grid>
+            <Grid item xs={4}>
+              <p>
+                Until further updates, a default movie needs to start in the list, hence No Country For Old Men is there
+                <br/>
+                <br/>
+                Pop button does work! <br/>
+                It just requires you to change the text in the input search field for it to display the new list.. unsure why
+              </p>
+
+            </Grid>
+
+            </Grid>
+            </div>
     </div>
 
     
   );
 
   function search(){
-    axios.get(MOVIE_BASE_URL + movieName + "&" + APIKEY).then((res) => {
+    axios.get(MOVIE_BASE_URL + movieName + "&apikey=" + APIKEY).then((res) => {
 
       setMovieInfo(res.data);
 

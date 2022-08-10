@@ -28,6 +28,38 @@
   color: #61dafb;
 }
 
+#main-body {
+  padding-left: 10vw;
+  padding-top: 2.5vw;
+  
+}
+
+:root {
+  background-color: #f7e0d1;
+}
+
+#search-results {
+  padding: 1em;
+}
+
+#watchlist {
+  padding-top: 3em;
+  padding-left: 5em;
+}
+
+#buttonGroup {
+  padding-left: 3em;
+}
+
+h1 {
+  color: #355C7D;
+}
+
+h3 {
+  color: #355C7D;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
