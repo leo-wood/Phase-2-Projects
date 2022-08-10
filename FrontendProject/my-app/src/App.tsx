@@ -26,7 +26,7 @@ function App() {
   ]);
 
   const MOVIE_BASE_URL = "http://www.omdbapi.com/?t=";
-  const APIKEY = "7cca2981";
+  const APIKEY = "";
 
   const searchButton = document.getElementById('search-bar');
 
