@@ -13,6 +13,9 @@ The production configuration file allows for a connection to be made to a potent
 ### Demonstrate how these middleware via DI (dependency injection) simplifies your code.
 
 
+middleware via DI allows for less redundancy and for my code to be more modular as it follows the dependency inversion principle.
+
+I've used this in my PokemonController class where my _client uses an interface of IHttpClientFactory, not a concrete class of it. This means if the implementation of the interace was changed, the controller can remain unchanged.
 
 ### Demonstrate why the middleware libraries made your code easier to test.
 
