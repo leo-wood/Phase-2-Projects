@@ -1,5 +1,5 @@
 
-#Watchlist API
+# Watchlist API
 Search for movies using the OMDb API and add them to a watchlist
 
 ## Requires API key
