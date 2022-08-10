@@ -1,9 +1,11 @@
+
 #Watchlist API
 Search for movies using the OMDb API and add them to a watchlist
 
 ## Requires API key
 
-Within App.tsx is a var
+
+Within App.tsx is a variable named
 
 `const APIKEY`
 set this equal to the API key obtained from OMDb here
@@ -11,8 +13,6 @@ set this equal to the API key obtained from OMDb here
 https://www.omdbapi.com/apikey.aspx
 
 Key is free and is sent to your email
-
-
 
 
 ## Available Scripts
